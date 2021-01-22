@@ -4,25 +4,26 @@ import { populateArray, randomiseArray } from './functions';
 
 
 function App() {
-// eslint-disable-next-line 
+
   const [toSort, setToSort] = useState<number[]>([])
+  const [arrayLength, setArrayLength] = useState(25)
 
-  let arrayLength = 5
-
-  const updateArray = (arrayLength: number): void => {
-    setToSort(randomiseArray(populateArray(arrayLength)))
+  const updateArray = (desiredLength: number): void => {
+    setToSort(randomiseArray(populateArray(desiredLength)))
   }
 
   useEffect(() => {
     updateArray(arrayLength)
   },[arrayLength])
-  
+
   return (
     <div className="App">
       <h1>Hello World!</h1>
+      <h2>Move the slider to customise the array length!</h2>
       <p>
-        Array to be sorted: {toSort}
+        Array to be sorted: {toSort.join(', ')}
       </p>
+      <input type="range" onChange={(event) => setArrayLength(Number(event.target.value))} id="slider" defaultValue="20" min="10" max="100"/>
     </div>
   );
 }
