@@ -19,16 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello World!</h1>
       <h2>Move the slider to customise the array length!</h2>
-      <p>
-        Array to be sorted: {toSort.join(', ')}
-      </p>
-      <input type="range" onChange={(event) => setArrayLength(Number(event.target.value))} id="slider" defaultValue="20" min="10" max="100"/>
+      <input type="range" onChange={(event) => setArrayLength(Number(event.target.value))} id="slider" defaultValue="20" min="10" max="1000"/>
       <button onClick={() => {setToSort(quickSort(toSort))}}>Sort</button>
-
       <Bars toSort={toSort} />
-      
     </div>
   );
 }

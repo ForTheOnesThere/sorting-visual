@@ -13,7 +13,7 @@ const Bars = (props: BarProps) => {
     <div id={'bar-list'}>
       {toSort.map(( value , i) => {
         return (
-          <div key={i} style={{display: 'inline-block', height: `${value}vh`, width: `${(100/toSort.length)}vw`, backgroundColor: 'red'}}>{value}</div>
+          <div key={i} className={'bar'} style={{height: `${(value/toSort.length)*100}vh`, width: `${(100/toSort.length)}vw`}}>{value}</div>
         )
       })}
     </div>

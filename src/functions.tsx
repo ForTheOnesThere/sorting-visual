@@ -16,40 +16,32 @@ export const randomiseArray = (input: number[]): number[] => {
   return input
 }
 
+const swap = (i: number, j: number, array: number[]): void => {
+  let temp = array[j]
+  array[j] = array[i]
+  array[i] = temp
+  return
+}
+
 export const quickSort = (array: number[]): number[] => {
 
 if (!array.length) {return array}
 
   let pivot = array[array.length-1]
-  //console.log('pivot: ', pivot)
-
   let i = -1
-  let temp: number
 
   for (let j=0; j<array.length-1; j++){
-    
-
     if (array[j] <= pivot) {
       i++
-      //console.log(i)
-      temp = array[j]
-      array[j] = array[i]
-      array[i] = temp
-      //console.log('swapped ', array[i], ' and ', array[j])
+      swap(i, j, array)
     }
-    //console.log(j, array)
-  
 }
 
-    array.splice(i+1, 0, pivot)
-    array.pop()
+  array.splice(i+1, 0, pivot)
+  array.pop()
 
-    let left = array.slice(0,i+1)
-    let right = array.slice(i+2, array.length)
-    //console.log('smaller array is: ', left)
-    //console.log('larger array is: ', right)
+  let left = array.slice(0,i+1)
+  let right = array.slice(i+2, array.length)
 
-  //console.log(quickSort(left).concat(pivot, quickSort(right)))
   return quickSort(left).concat(pivot, quickSort(right))
-
 }
