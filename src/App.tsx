@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { populateArray, randomiseArray } from './functions';
+import Bars from './components/Bars'
+import { populateArray, randomiseArray, quickSort } from './functions';
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
         Array to be sorted: {toSort.join(', ')}
       </p>
       <input type="range" onChange={(event) => setArrayLength(Number(event.target.value))} id="slider" defaultValue="20" min="10" max="100"/>
+      <button onClick={() => {setToSort(quickSort(toSort))}}>Sort</button>
+
+      <Bars toSort={toSort} />
+      
     </div>
   );
 }
