@@ -16,16 +16,17 @@ export const randomiseArray = (input: number[]): number[] => {
   return input
 }
 
-const swap = (i: number, j: number, array: number[]): void => {
+const swap = (i: number, j: number, array: number[]): number[] => {
   let temp = array[j]
   array[j] = array[i]
   array[i] = temp
-  return
+  console.log(`swapped ${array[i]} and ${array[j]}`)
+  return array
 }
 
-export const quickSort = (array: number[]): number[] => {
+export const quickSort = (array: number[], setToSort: Function): void => {
 
-if (!array.length) {return array}
+  if (!array.length) {return}
 
   let pivot = array[array.length-1]
   let i = -1
@@ -43,5 +44,13 @@ if (!array.length) {return array}
   let left = array.slice(0,i+1)
   let right = array.slice(i+2, array.length)
 
-  return quickSort(left).concat(pivot, quickSort(right))
+
+  setTimeout(()=>{
+    setToSort([...array])
+    if (!left.length){quickSort(right, setToSort)}
+    else {quickSort(left, setToSort)}
+  }, 1000)
+
+  return
+  //return quickSort(left).concat(pivot, quickSort(right))
 }

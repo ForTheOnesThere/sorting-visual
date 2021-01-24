@@ -7,7 +7,7 @@ interface BarProps {
 
 const Bars = (props: BarProps) => {
 
-  const { toSort } = props
+  let { toSort } = props
 
   return(
     <div id={'bar-list'}>
